@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+            .row.content {
+                height: 100vh;
+            }
+    
+            /* Set gray background color and 100% height */
+            .sidenav {
+                background-color: #f1f1f1;
+                height: 100vh;
+            }
+            h4{
+                font-weight: bold;
+            }
+    
+            /* On small screens, set height to 'auto' for the grid */
+            @media screen and (max-width: 767px) {
+                .row.content {
+                    height: auto;
+                }
+            }
+            h1{
+                text-align: center;
+            }
+            .center{
+                text-align: center;
+            }
+            .bold{
+                font-weight: strong;
+            }
+        </style>
+    <title>Temperature</title>
+
+</head>
+<body>	
+ <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">Conditions</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#ottawa">Ottawa<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#whitby">Whitby</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#surrey">Surrey</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#banff">Banff</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#saskatoon">Saskatoon</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron jumbotron-fluid" id="ottawa">
+    <h1 class="display-7" >Ottawa</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in ottawaList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="whitby">
+    <h1 class="display-7" >Whitby</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in whitbyList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="surrey">
+    <h1 class="display-7" >Surrey</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in surreyList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="banff">
+    <h1 class="display-7" >Banff</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in banffList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="saskatoon">
+    <h1 class="display-7" >Saskatoon</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in saskatoonList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+    
+</body>
+</html>
