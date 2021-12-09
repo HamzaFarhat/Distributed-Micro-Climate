@@ -6,34 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
-    <title>Temperature</title>
-    <style>
-        h1 {padding-top: 1em}
-
-        #inside { padding-top: 1em;}
-
-        li{
-            padding-top: 1em;
-        }
-
-    </style>
-</head>
-<body>	
- 
-
-
-
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-        <title>Bootstrap Example</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <style>
             /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
             .row.content {
@@ -55,168 +29,146 @@
                     height: auto;
                 }
             }
+            h1{
+                text-align: center;
+            }
+            .center{
+                text-align: center;
+            }
+            .bold{
+                font-weight: strong;
+            }
         </style>
-    </head>
-    
-    <body>
-    
-        <nav class="navbar navbar-inverse visible-xs">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Smart Thermostat</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Dashboard</a></li>
-                        <li><a href="#">Temperature</a></li>
-                        <li><a href="#">Automate Temprature</a></li>
-                        <li><a href="#">Past Temprature Trends</a></li>    
-		</ul>
-                </div>
-            </div>
-        </nav>
+    <title>Temperature</title>
 
-        <div class="container-fluid">
-            <div class="row justify-content-between">
-                <div class="col-lg-2 sidenav hidden-xs" style="z-index:100; position:fixed;">
-                    <h2>Home Hub</h2>
-                    <ul class="nav nav-pills nav-stacked">
-                        <li class="active"><a href="#dash" ">Dashboard</a></li>
-                        <div style="width: 100%;">
-                        <li><a href="#temphistory">Temperature</a></li>
-                        </div>
-                        <div style="width: 100%;">
-                        <li><a href="#humidhistory">Humidity</a></li>
-                        </div>
-                        <div style="width: 100%;">
-                        <li><a>Set Conditions</a></li>
-                        </div>
-                        <div style="width: 100%;">
-                            <li><a>Schedule</a></li>
-                        </div>
-			<div style="width:100%;">
-				<h3>Developer</h3>
-			</div>
-			<div style="width: 100%;">
-                		<li><a href="https://group7iot.com/api/myapp/">Django API</a></li>
-			</div>
-			<div style="width: 100%;">
-				<li><a href="https://www.group7iot.com:1880/admin/">Node-Red</a></li>
-			</div>
-			<div style="width: 100%;">
-				<li><a href="https://www.group7iot.com/admin/">SQLite DB</a></li>
-			</div>
-                    </ul><br>
-		</div>
-                <br>
-    
-                <div class="col-sm-9">
-                    <div class="well" id="dash">
-                        <h4>Dashboard</h4>
-                        <p>Fully Operational</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-3">
-                            <div class="well">
-                                <h4><strong>Temperature </strong></h4>
-                                <p>{{ temperature.temperature }} &deg;C</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="well">
-                                <h4><strong>Humidity</strong></h4>
-                                <p>{{ temperature.humidity }}%</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="well">
-                                <h4><strong>Home Status</strong></h4>
-                                {% if temperature.home %}
-                                <p>Occupied</p>
-                                {% else %}
-                                <p>Unoccupied</p>
-                                {% endif %}
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="well">
-                                <h4>{{country}}</h4>
-                                <p>{{weather}} &deg;C</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <div class="well">
-                                <h4>Temperature History</h4>
-                                <ol>
-                                {% for temp in tempList %}
-                                    
-                                        <li><p>{{temp.temperature}} &deg;C</p></li>
-                                    
-                                {%endfor%}
-                                </ol>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="well">
-                                <h4>Humidity History</h4>
-                                <ol>
-                                {% for temp in tempList %}
-                                <li><p>{{temp.humidity}} %</p></li>
-                                
-                                {%endfor%}
-                                </ol>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="well">
-                                <h4>Home Status</h4>
-                                <ol>
-                                {% for temp in tempList reversed %}
-                                    {% if temp.home %}
-                                    <li><p>Occupied</p></li>
-                                    {% else %}
-                                    <li><p>Unoccupied</p></li>
-                                    {% endif %}
-                                
-                                {%endfor%}
-                                </ol>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-12" id="temphistory">
-                            <div class="well">
-                                
-                                <center>{{ tempgraph |safe }}</center>
-                                
-                            </div>
-                        </div>
+</head>
+<body>	
+ <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+  <a class="navbar-brand" href="#">Conditions</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#ottawa">Ottawa<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#whitby">Whitby</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#surrey">Surrey</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#banff">Banff</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#saskatoon">Saskatoon</a>
+      </li>
 
-                        <div class="col-md-12" id="humidhistory">
-                            <div class="well">
-                                
-                                <center>{{ humidgraph |safe }}</center>
-                                
-                                
-                            </div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
-    
-    </body>
-    
-    </html>
+    </ul>
+  </div>
+</nav>
 
+<div class="jumbotron jumbotron-fluid" id="ottawa">
+    <h1 class="display-7" >Ottawa</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in ottawaList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="whitby">
+    <h1 class="display-7" >Whitby</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in whitbyList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="surrey">
+    <h1 class="display-7" >Surrey</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in surreyList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="banff">
+    <h1 class="display-7" >Banff</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in banffList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
+
+<div class="jumbotron jumbotron-fluid" id="saskatoon">
+    <h1 class="display-7" >Saskatoon</h1>
+    <br><br>
+
+<div class="row">
+            <h4 class="col-md-3 center">Temperature</h4>
+            <h4 class="col-md-3 center">Humidity</h4>
+            <h4 class="col-md-3 center">Wind Speed</h4>
+            <h4 class="col-md-3 center">Precipitation</h4>
+            <br><br>
+            {% for item in saskatoonList reversed %}
+            <div class="col-md-3 center">{{item.temperature}} &degC</div>
+            <div class="col-md-3 center">{{item.humidity}} %</div>
+            <div class="col-md-3 center">{{item.windspeed}}</div>
+            <div class="col-md-3 center">{{item.percipitation}} mm</div>
+            {%endfor%}
+</div>
+</div>
+<br><br>
 
     
 </body>

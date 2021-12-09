@@ -2,6 +2,10 @@ from django.db import models
 
 # Create your models here.
 class Conditions(models.Model):
-	temperature = models.CharField(max_length=200)
-	humidity = models.CharField(max_length=200)
-	home = models.BooleanField()
+	myId = models.IntegerField()
+	location = models.CharField(max_length=200)
+	temperature = models.FloatField()
+	humidity = models.FloatField()
+	windspeed = models.FloatField()
+	percipitation = models.FloatField()
+	
